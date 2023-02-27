@@ -1,11 +1,18 @@
+import React from 'react';
+import { RedBorder } from './components/RedBorder';
+
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      My React app 
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <RedBorder>
+          My React app
+        </RedBorder>
+      </div>
+    );
+  }
 }
 
 export default App;
