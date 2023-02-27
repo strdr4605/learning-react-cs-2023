@@ -1,5 +1,5 @@
 import React from 'react';
-import { RedBorder } from './components/RedBorder';
+import RedBorder from './components/RedBorder';
 
 import './App.css';
 
