@@ -4,15 +4,14 @@ import RedBorder from './components/RedBorder';
 import './App.css';
 import ClickButton from './components/ClickBotton';
 import Counter from './components/Counter';
+import Steper from './components/Steper';
 
 class App extends React.Component {
   render() {
     return (
       <div className="flex">
-        <Counter step={1} maxValue={3} />
         <Counter />
-        <Counter step={4} />
-        <Counter step={434} />
+        <Steper maxValue={3}/>
       </div>
     );
   }
