@@ -22,7 +22,7 @@ export default class Counter extends React.Component {
     render() {
 
         return (
-            <div className="">
+            <div className="border border-2 border-red-400 p-2 m-2">
                 <h1>Counter: {this.state.counter}</h1>
                 <Button onClick={() => this.decrement()}>-1</Button>
                 <Button onClick={() => this.increment()}>+1</Button>

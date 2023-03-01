@@ -8,7 +8,8 @@ import Counter from './components/Counter';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="flex">
+        <Counter />
         <Counter />
       </div>
     );
