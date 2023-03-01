@@ -9,8 +9,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="flex">
+        <Counter step={1} />
         <Counter />
-        <Counter />
+        <Counter step={4} />
+        <Counter step={434} />
       </div>
     );
   }
