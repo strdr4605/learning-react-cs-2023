@@ -12,11 +12,13 @@ export default class Steper extends React.Component {
     decrement() {
         const newStep = this.state.step - 1;
         this.setState({ step: newStep });
+        this.props.onChange(newStep);
     }
 
     increment() {
         const newStep = this.state.step + 1;
         this.setState({ step: newStep });
+        this.props.onChange(newStep);
     }
 
     render() {

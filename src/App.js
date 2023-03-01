@@ -7,11 +7,19 @@ import Counter from './components/Counter';
 import Steper from './components/Steper';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      steperValue: 1
+    };
+  }
+
   render() {
     return (
       <div className="flex">
-        <Counter />
-        <Steper maxValue={3}/>
+        <Counter step={this.state.steperValue} />
+        <Steper onChange={(value) => this.setState({ steperValue: value })} maxValue={3} />
       </div>
     );
   }
