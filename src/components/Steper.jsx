@@ -1,47 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 
-export default class Steper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 1,
-    };
+export default function Steper(props) {
+  const { step, maxValue, onChange } = props;
+  const [innerStep, setInnerStep] = useState(1);
+
+  function decrement() {
+    const newStep = innerStep - 1;
+    setInnerStep(newStep);
+    onChange(newStep);
   }
 
-  decrement() {
-    const newStep = this.state.step - 1;
-    this.setState({ step: newStep });
-    this.props.onChange(newStep);
+  function increment() {
+    const newStep = innerStep + 1;
+    setInnerStep(newStep);
+    onChange(newStep);
   }
 
-  increment() {
-    const newStep = this.state.step + 1;
-    this.setState({ step: newStep });
-    this.props.onChange(newStep);
-  }
+  const showIncButton = maxValue === undefined || innerStep < maxValue;
 
-  render() {
-    const showIncButton =
-      this.props.maxValue === undefined ||
-      this.state.step < this.props.maxValue;
-
-    return (
-      <div className="border border-2 border-blue-400 p-2 m-2">
-        <h1>Step: {this.state.step}</h1>
-        {this.state.step > 1 && (
-          <Button onClick={() => this.decrement()}>
-            -{this.props.step || 1}
-          </Button>
-        )}
-        {showIncButton ? (
-          <Button onClick={() => this.increment()}>
-            +{this.props.step || 1}
-          </Button>
-        ) : (
-          <span>Max value reached</span>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className="border border-2 border-blue-400 p-2 m-2">
+      <h1>Step: {innerStep}</h1>
+      {innerStep > 1 && (
+        <Button onClick={() => decrement()}>-{step || 1}</Button>
+      )}
+      {showIncButton ? (
+        <Button onClick={() => increment()}>+{step || 1}</Button>
+      ) : (
+        <span>Max value reached</span>
+      )}
+    </div>
+  );
 }
