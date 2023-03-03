@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Counter from "./components/Counter";
 import Steper from "./components/Steper";
 import "./App.css";
-import FunctionalCounter from "./components/FunctionalCounter";
 import Button from "./components/Button";
 
 function useAppState({ defaultStep, defaultLiked }) {
