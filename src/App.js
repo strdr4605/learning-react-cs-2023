@@ -1,28 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Counter from "./components/Counter";
 import Steper from "./components/Steper";
 import "./App.css";
+import FunctionalCounter from "./components/FunctionalCounter";
+import Button from "./components/Button";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function useAppState({ defaultStep, defaultLiked }) {
+  const [step, setStep] = useState(defaultStep);
+  const [liked, setLiked] = useState(defaultLiked);
 
-    this.state = {
-      steperValue: 1,
-    };
-  }
+  return {
+    step: step * 2,
+    setStep,
+    liked,
+    setLiked,
+  };
+}
 
-  render() {
-    return (
-      <div className="flex">
-        <Counter step={this.state.steperValue} />
-        <Steper
-          onChange={(value) => this.setState({ steperValue: value })}
-          maxValue={3}
-        />
-      </div>
-    );
-  }
+function App(props) {
+  const { step, setStep, liked, setLiked } = useAppState({
+    defaultStep: 4,
+    defaultLiked: true,
+    
+  });
+
+  return (
+    <div className="flex">
+      <FunctionalCounter />
+      <Counter step={step} />
+      <Steper onChange={(value) => setStep(value)} maxValue={3} />
+      {!liked ? (
+        <Button onClick={() => setLiked(true)}>Like me</Button>
+      ) : (
+        <span>you liked</span>
+      )}
+    </div>
+  );
 }
 
 export default App;
