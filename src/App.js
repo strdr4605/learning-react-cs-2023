@@ -3,6 +3,7 @@ import Counter from "./components/Counter";
 import Steper from "./components/Steper";
 import "./App.css";
 import Button from "./components/Button";
+import ClickedButton from "./components/ClickBotton";
 
 function useAppState({ defaultStep, defaultLiked }) {
   const [step, setStep] = useState(defaultStep);
@@ -25,7 +26,9 @@ function App(props) {
 
   return (
     <div className="flex">
-      <FunctionalCounter />
+      <ClickedButton hover afterClickText="YOOOOOO Clickedddd">
+        Here are children
+      </ClickedButton>
       <Counter step={step} />
       <Steper onChange={(value) => setStep(value)} maxValue={3} />
       {!liked ? (

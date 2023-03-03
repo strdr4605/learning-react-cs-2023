@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default class ClickButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { clicked: false };
-  }
+const ClickedButton = (props) => {
+  const { hover, afterClickText, children } = props;
+  const [clicked, setClicked] = useState(false);
 
-  render() {
-    const { hover, afterClickText, children } = this.props;
-
-    if (this.state.clicked) {
+    if (clicked) {
       return <h2>{afterClickText || "You clicked and liked"}</h2>;
     }
 
@@ -25,10 +20,10 @@ export default class ClickButton extends React.Component {
     return (
       <button
         className={buttonStyle}
-        onClick={() => this.setState({ clicked: true })}
+        onClick={() => setClicked(true)}
       >
         {children}
       </button>
-    );
-  }
-}
+    ); 
+};
+export default ClickedButton;
